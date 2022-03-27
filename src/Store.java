@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
-public class Store extends Player
+public class Store extends Cards
 {
     private int price;
+    Scanner kb = new Scanner(System.in);
 
     public Store(String playerName) {
         super(playerName);
@@ -18,7 +19,7 @@ public class Store extends Player
     public void storeChoices(int selector)
     {
 
-        Scanner kb = new Scanner(System.in);
+
         //Prompts user the choices for the store
         System.out.println("Type the number for the a choice: "+ "\n" +
                             "0: To exit store" + "\n" +
@@ -61,6 +62,32 @@ public class Store extends Player
             -This method increases the dmg output of the players move
             -this method should have a set price and an IF statement whether the player has enough to buy
         */
+        System.out.println("Attack Increase Costs 25" + "\n" +
+                            "Would you like to buy: Type Yes|No");
+
+        String userInput = kb.nextLine();
+        while (userInput.toUpperCase().charAt(0) != 'Y' && userInput.toLowerCase().charAt(0) != 'N')
+        {
+            if (userInput.toUpperCase().charAt(0) =='N')        //resets program
+            {
+                System.out.println(playerName + " ,I guess you can't afford it.");
+            }
+            else if(userInput.toUpperCase().charAt(0) =='Y')
+            {
+                if(silverCoins == 25){
+                    setAttackDmg(getAttackDmg() + 10); //Increase stat by 10
+                    subtractSilverCoins(30);            //deletes 30 silverCoins
+                }
+                else
+                {
+                    System.out.println(getPlayerName() " ,Get out! You are broke");
+                }
+            }
+            else
+            {
+                System.out.println("Only type (Y|N)");
+                userInput = kb.nextLine();
+            }
 
     }
     public void buyDmgReducedIncrease()

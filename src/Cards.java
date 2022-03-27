@@ -3,10 +3,10 @@ public class Cards extends Player
     /*
         Class should be an object that makes a card with certain stats
     */
-    private int attackDmg;
-    private int dmgReduced;
-    private int healthRestore;
-    private double successRate = 0.5;// success rate is to make the game for fun and not just see who can do more
+    protected int attackDmg;
+    protected int dmgReduced;
+    protected int healthRestore;
+    protected double successRate = 0.5;// success rate is to make the game for fun and not just see who can do more
     public Cards(String playerName, int attackDmg, int dmgReduced, int healthRestore)
     {
         //We will need to make 3 cards for each move with only 1 stat with actual numbers
