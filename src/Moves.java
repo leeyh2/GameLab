@@ -19,4 +19,8 @@ public class Moves extends Player
         //a method for a move that heals the player
         //should gain an ammount of health
     }
+    public void moveChoice()
+    {
+        //a method should be created with IF statements for using the different cards/moves
+    }
 }
