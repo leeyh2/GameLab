@@ -15,10 +15,12 @@ public class Player
    protected void addSilverCoins(int silverCoins)
    {
        //a method to add silver coins to player after defeating enemy
+       this.silverCoins += silverCoins;
    }
    protected void subtractSilverCoins(int silverCoins)
    {
        //a method to subtract silver coins to player after buying from store
+       this.silverCoins -= silverCoins;
    }
 
     public void setHealthBar(int healthBar) {
