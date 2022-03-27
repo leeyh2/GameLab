@@ -16,6 +16,10 @@ public class Cards extends Player
         this. healthRestore = healthRestore;
     }
 
+    public Cards(String playerName) {
+        super(playerName);
+    }
+
     public void setAttackDmg(int attackDmg) {
         this.attackDmg = attackDmg;
     }
