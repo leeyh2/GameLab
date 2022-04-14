@@ -16,6 +16,7 @@ public class Moves extends Player
     {
         //a method for a move reducing incoming dmg from enemy
         //should reduce attack dmg from enemy
+        // Have to establish how the enemy does dmg to make this method
 
     }
     public void useHealth()
