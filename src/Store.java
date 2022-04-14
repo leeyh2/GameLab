@@ -16,7 +16,7 @@ public class Store extends Cards {
         return price;
     }
 
-    public void storeChoices(int selector)
+    public void storeChoices()
     {
         //Prompts user the choices for the store
         System.out.println("Type the number for the a choice: " + "\n" +
@@ -25,6 +25,7 @@ public class Store extends Cards {
                 "2: To buy Dmg reduction stat Increase" + "\n" +
                 "3: To buy Health Restore stat Increase");
         boolean flag = true; //Flag for the loop
+        int selector = -1;
         do {
             //Do while loop should catch any int that is not 0-3
             try {

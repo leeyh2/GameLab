@@ -42,6 +42,7 @@ public class Moves extends Player
                 "2: To use Shield move" + "\n" +
                 "3: To use Health move");
         boolean flag = true; //Flag for the loop
+        int selector = -1;
         do {
             //Do while loop should catch any int that is not 0-3
             try {
