@@ -33,6 +33,9 @@ public class Moves extends Player
             System.out.Println(getPlayerName ", You can not heal over 100hp. You have messed up and screwed up your turn!");
         }
     }
+    /*
+    //Comment out method because it is redundant
+
     public void moveChoice()
     {
         //a method should be created with IF statements for using the different cards/moves
@@ -74,4 +77,5 @@ public class Moves extends Player
         while (flag);
 
     }
+    */
 }
