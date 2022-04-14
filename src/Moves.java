@@ -1,7 +1,15 @@
+import java.util.Scanner;
+import java.util.Random;
+
 public class Moves extends Player
 {
 
     Scanner kb = new Scanner(System.in);
+    Enemy enemy = new Enemy(playerName);
+    static int attackDmg;
+    static int dmgReduced;
+    static int healthRestore;
+    Cards card = new Cards(playerName, attackDmg, dmgReduced, healthRestore);
     public Moves(String playerName) {
         super(playerName);
     }
@@ -9,33 +17,39 @@ public class Moves extends Player
     {
         //a method for a move attacks for player
         //subtracts health from enemy
-        enemyHealthBar=-getAttackDmg;
-        System.out.println(getPlayerName " , has used Attack dealing this much damage: " getAttackDmg);
+        enemy.enemyHealthBar =- card.getAttackDmg();
+        System.out.println(playerName + " , has used Attack dealing " + card.getAttackDmg() + " damage: ");
     }
     public void useShield()
     {
         //a method for a move reducing incoming dmg from enemy
         //should reduce attack dmg from enemy
         // Have to establish how the enemy does dmg to make this method
+        Random ranNum = new Random();
+        
+        int blockValue = ranNum.nextInt(10);
+        
+        System.out.println(blockValue);
+
+        
+
+        healthBar -= enemy.getEnemyDmg();
 
     }
     public void useHealth()
     {
         //a method for a move that heals the player
         //should gain an ammount of health
-        if(getHealthBar <100)
+        if(getHealthBar() <100)
         {
-            healthBar+= getHealthRestore;
-            System.out.println(getPlayerName "has been healed by this much: " getHealthRestore);
+            healthBar += card.getHealthRestore();
+            System.out.println(getPlayerName() + "has been healed by this much: "  + card.getHealthRestore());
         }
         else
         {
-            System.out.Println(getPlayerName ", You can not heal over 100hp. You have messed up and screwed up your turn!");
+            System.out.println(getPlayerName() + ", You can not heal over 100hp. You have messed up and screwed up your turn!");
         }
     }
-    /*
-    //Comment out method because it is redundant
-
     public void moveChoice()
     {
         //a method should be created with IF statements for using the different cards/moves
@@ -53,7 +67,7 @@ public class Moves extends Player
                 selector = kb.nextInt();
                 if (selector == 0) {
                     //This should exit the User out of the game for being a coward
-                    System.out.println("Coward has fled...")
+                    System.out.println("Coward has fled...");
                     System.exit(0);
                     flag = false;
                 } else if (selector == 1) {
@@ -77,5 +91,4 @@ public class Moves extends Player
         while (flag);
 
     }
-    */
 }
