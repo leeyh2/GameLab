@@ -1,102 +1,80 @@
 import java.util.Scanner;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
-public class Moves extends Player
-{
+public class Main {
 
-    Scanner kb = new Scanner(System.in);
-    Enemy enemy = new Enemy(playerName);
+    static Scanner kb = new Scanner(System.in);
+    static boolean flag;
 
-    Cards card = new Cards(playerName, Cards.attackDmg, Cards.dmgReduced, Cards.healthRestore);
-    Cards sword = new Cards(Cards.cardName = "Sword", Cards.attackDmg = 5, Cards.dmgReduced = 0, Cards.healthRestore = 0);
+    public static void main(String[] args)
+    {
+        //probably need to make a class to run everything: like set the game up.
+        //make the card objects and set every prices and stats.
+        //make dialogue and guid the player
 
+        System.out.println("Welcome To The Game!\n" + "Enter your player name: ");
+        Player.playerName = "Gray";//kb.nextLine();
+        
+        
+        
+        battle(Player.playerName);
+            
+        
+    }
+    public static void battle(String playerName)
+    {
+        Enemy enemy = new Enemy(playerName);
+        
+        displayPlayerStats(playerName, Cards.attackDmg, Cards.dmgReduced, Cards.healthRestore);
+        
+        do{   
+            enemy.displayEnemy();
+            turnOptions();
+        }while(enemy.enemyHealthBar > 0);
+        
+        
+    }
+    public static int turnOptions()
+    {
+        Moves moves = new Moves(Cards.playerName);
+        System.out.println("-----Choose an option-----");
+        System.out.println("1. Attack");
+        System.out.println("2. Block");
+        System.out.println("3. Heal");
+        
+        int option = kb.nextInt();
+
+        switch(option)
+        {
+            case 1:
+                moves.useAttack();
+                System.out.println("You used Attack!");
+                break;
+            case 2:
+                moves.useShield();
+                System.out.println("You used Shiled!");
+                break;
+            case 3:
+                moves.useHealth();
+                System.out.println("You used a Health Potion!");
+                break;
+            default :
+                System.out.println("Invalid input");
+        }
+
+        return option;
+    }
+    public static void displayPlayerStats(String playerName, int attackDmg, double dmgReduced, int healthRestore)
+    {
+        System.out.println("-------------Player Info--------------");
+        System.out.println("\tPlayer name: " + playerName);
+        System.out.println("\tAttack Damage: " + Cards.attackDmg );
+        System.out.println("\tBlock Power: " + Cards.dmgReduced);
+        System.out.println("\tHealth Potions: " +Player.healthPotions);
+        System.out.println("--------------------------------------\n");
+
+    }
     
-    public Moves(String playerName) {
-        super(playerName);
-    }
-    public void displayCards()
-    {
-        displayCards();
-    }
-    public void useAttack()
-    {
-        //a method for a move attacks for player
-        //subtracts health from enemy
-        int enemyHP = enemy.getEnemyHealthBar();
-        System.out.println(sword.getAttackDmg());
-        enemyHP = enemyHP - sword.getAttackDmg();
 
-        System.out.println(playerName + ", has used Attack dealing " + sword.getAttackDmg() + " damage: ");
-    }
-    public void useShield()
-    {
-        //a method for a move reducing incoming dmg from enemy
-        //should reduce attack dmg from enemy
-        // Have to establish how the enemy does dmg to make this method
-        Random ranNum = new Random();
-        
-        int blockValue = ranNum.nextInt(10);
-        
-        System.out.println(blockValue);
-
-        
-
-        healthBar -= enemy.getEnemyDmg();
-
-    }
-    public void useHealth()
-    {
-        //a method for a move that heals the player
-        //should gain an ammount of health
-        if(getHealthBar() <100 && healthPotions != 0)
-        {
-            healthBar += card.getHealthRestore();
-            System.out.println(getPlayerName() + "has been healed by this much: "  + card.getHealthRestore());
-        }
-        else
-        {
-            System.out.println(getPlayerName() + ", You can not heal over 100hp. You have messed up and screwed up your turn!");
-        }
-    }
-    public void moveChoice()
-    {
-        //a method should be created with IF statements for using the different cards/moves
-        //Prompts user the choices for the move choice
-        System.out.println("Type the number for the a choice: " + "\n" +
-                "0: To Run away from Life" + "\n" +
-                "1: To use Attack move" + "\n" +
-                "2: To use Shield move" + "\n" +
-                "3: To use Health move");
-        boolean flag = true; //Flag for the loop
-        int selector = -1;
-        do {
-            //Do while loop should catch any int that is not 0-3
-            try {
-                selector = kb.nextInt();
-                if (selector == 0) {
-                    //This should exit the User out of the game for being a coward
-                    System.out.println("Coward has fled...");
-                    System.exit(0);
-                    flag = false;
-                } else if (selector == 1) {
-                    //This should go to useAttack method and use it
-                    useAttack();
-                    flag = false;
-                } else if (selector == 2) {
-                    //This should go to useShield method and use it
-                    useShield();
-                    flag = false;
-                } else if (selector == 3) {
-                    //This should go to useHealth method and use it
-                    useHealth();
-                    flag = false;
-                }
-            } catch (Exception exception) {
-                //It should catch any exception that is not an int.
-                System.out.println(getPlayerName() + ", that is the wrong input. Can you not read? Try again");
-            }
-        }
-        while (flag);
-
-    }
 }
