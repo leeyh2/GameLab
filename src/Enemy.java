@@ -1,46 +1,62 @@
-import java.util.Random;
-public class Enemy extends Player
+public class Player
 {
-    public  String enemyName;
-    public static  int enemyHealthBar;
-    public  int enemyDmg;
+    static String playerName;
+    protected int healthBar;
+    protected int silverCoins;
+    public static int healthPotions;
 
-    Random ranNum = new Random();
+    
 
-    public Enemy(String playerName)
+
+
+    public Player(String playerName)
     {
-        super(playerName);
-        enemyName = "Kalel";
-        enemyHealthBar = 100;
-        silverCoins = 15;
-        enemyDmg = ranNum.nextInt(100);
+        this.playerName = playerName;   //player should only be able to set their name.
+        healthBar = 100;
+        silverCoins = 25; 
+        healthPotions= 3;              //silver coins need to be balanced player can't buy everything
 
     }
+   protected void addSilverCoins(int silverCoins)
+   {
+       //a method to add silver coins to player after defeating enemy
+       this.silverCoins += silverCoins;
+   }
+   protected void subtractSilverCoins(int silverCoins)
+   {
+       //a method to subtract silver coins to player after buying from store
+       this.silverCoins -= silverCoins;
+   }
 
-    public void setEnemyName(String enemyName) {
-        this.enemyName = enemyName;
+    public void setHealthBar(int healthBar) {
+        this.healthBar = healthBar;
     }
 
-    public void setEnemyHealthBar(int enemyHealthBar) {
-        this.enemyHealthBar = enemyHealthBar;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
-    public int getEnemyHealthBar() {
-        return enemyHealthBar;
+    public void setSilverCoins(int silverCoins) {
+        this.silverCoins = silverCoins;
     }
 
-    public String getEnemyName() {
-        return enemyName;
+    public int getHealthBar() {
+        return healthBar;
     }
-    public int getEnemyDmg()
+
+    public int getSilverCoins() {
+        return silverCoins;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+    public void displayDeck(Cards cards)
     {
-        return enemyDmg;
-    }
-    public void displayEnemy()
-    {
-        System.out.println("-----Enemy-----");
-        System.out.println("Enemy Name: " + enemyName);
-        System.out.println("Enemy Health: " + healthBar);
-        System.out.println("---------------\n");
+        System.out.println("-----"+cards.getCardName()+"-----");
+        System.out.println("Attack Damage: " + cards.getAttackDmg());
+        System.out.println("Block Stat: " + cards.getDmgReduced());
+        System.out.println("Health Stat: " + cards.getHealthRestore());
+
     }
 }
