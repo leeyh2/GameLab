@@ -8,7 +8,7 @@ public class Moves extends Player
     Enemy enemy = new Enemy(playerName);
 
 
-    Cards card = new Cards(playerName, attackDmg, Cards.dmgReduced, Cards.healthRestore);
+    Cards card = new Cards(playerName, Cards.attackDmg, Cards.dmgReduced, Cards.healthRestore);
     Cards sword = new Cards(Cards.cardName = "Sword", Cards.attackDmg = 5, Cards.dmgReduced = 0, Cards.healthRestore = 0);
 
     
