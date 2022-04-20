@@ -3,14 +3,16 @@ public class Cards extends Player
     /*
         Class should be an object that makes a card with certain stats
     */
-    protected int attackDmg;
-    protected int dmgReduced;
-    protected int healthRestore;
+    public static int attackDmg;
+    public static int dmgReduced;
+    public static int healthRestore;
+    public static String cardName;
     protected double successRate = 0.5;// success rate is to make the game for fun and not just see who can do more
-    public Cards(String playerName, int attackDmg, int dmgReduced, int healthRestore)
+    public Cards(String cardName, int attackDmg, int dmgReduced, int healthRestore)
     {
         //We will need to make 3 cards for each move with only 1 stat with actual numbers
         super(playerName);
+        this.cardName = cardName;
         this.attackDmg = attackDmg;
         this.dmgReduced = dmgReduced;
         this. healthRestore = healthRestore;
@@ -34,6 +36,14 @@ public class Cards extends Player
 
     public void setSuccessRate(double successRate) {
         this.successRate = successRate;
+    }
+    public void setCardName(String cardName)
+    {
+        this.cardName = cardName;
+    }
+    public String getCardName()
+    {
+        return cardName;
     }
 
     public int getAttackDmg() {
