@@ -6,19 +6,27 @@ public class Moves extends Player
 
     Scanner kb = new Scanner(System.in);
     Enemy enemy = new Enemy(playerName);
-    static int attackDmg;
-    static int dmgReduced;
-    static int healthRestore;
-    Cards card = new Cards(playerName, attackDmg, dmgReduced, healthRestore);
+
+    Cards card = new Cards(playerName, Cards.attackDmg, Cards.dmgReduced, Cards.healthRestore);
+    Cards sword = new Cards(Cards.cardName = "Sword", Cards.attackDmg = 5, Cards.dmgReduced = 0, Cards.healthRestore = 0);
+
+    
     public Moves(String playerName) {
         super(playerName);
+    }
+    public void displayCards()
+    {
+        displayCards();
     }
     public void useAttack()
     {
         //a method for a move attacks for player
         //subtracts health from enemy
-        enemy.enemyHealthBar =- card.getAttackDmg();
-        System.out.println(playerName + " , has used Attack dealing " + card.getAttackDmg() + " damage: ");
+        int enemyHP = enemy.getEnemyHealthBar();
+        System.out.println(sword.getAttackDmg());
+        enemyHP = enemyHP - sword.getAttackDmg();
+
+        System.out.println(playerName + ", has used Attack dealing " + sword.getAttackDmg() + " damage: ");
     }
     public void useShield()
     {
@@ -40,7 +48,7 @@ public class Moves extends Player
     {
         //a method for a move that heals the player
         //should gain an ammount of health
-        if(getHealthBar() <100)
+        if(getHealthBar() <100 && healthPotions != 0)
         {
             healthBar += card.getHealthRestore();
             System.out.println(getPlayerName() + "has been healed by this much: "  + card.getHealthRestore());
