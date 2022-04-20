@@ -1,15 +1,16 @@
 public class Player
 {
-    protected String playerName;
+    static String playerName;
     protected int healthBar;
     protected int silverCoins;
-
+    public static int healthPotions;
 
     public Player(String playerName)
     {
         this.playerName = playerName;   //player should only be able to set their name.
         healthBar = 100;
-        silverCoins = 25;               //silver coins need to be balanced player can't buy everything
+        silverCoins = 25; 
+        healthPotions= 3;              //silver coins need to be balanced player can't buy everything
 
     }
    protected void addSilverCoins(int silverCoins)
@@ -45,5 +46,13 @@ public class Player
 
     public String getPlayerName() {
         return playerName;
+    }
+    public void displayDeck(Cards cards)
+    {
+        System.out.println("-----"+cards.getCardName()+"-----");
+        System.out.println("Attack Damage: " + cards.getAttackDmg());
+        System.out.println("Block Stat: " + cards.getDmgReduced());
+        System.out.println("Health Stat: " + cards.getHealthRestore());
+
     }
 }
